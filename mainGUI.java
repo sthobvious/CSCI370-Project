@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 public class mainGUI extends JFrame implements ActionListener{
 	
-	public mainFrame(String title, int height, int width) {
+	public mainGUI(String title, int height, int width) {
 		//make the actual jframe
 		setTitle(title);
 		setSize(height, width);
@@ -35,11 +35,10 @@ public class mainGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 		String  buttonName;
     	buttonName = event.getActionCommand();
-    	if (buttonName.equals("Patient")) {      
-    		//code to change 
+    	if (buttonName.equals("Patient Sleep Disorder Survey")) {      
     		JOptionPane.showMessageDialog(null, "Test 1!");
     	} 
-    	else if (buttonName.equals("Admin")) {      
+    	else if (buttonName.equals("Edit Patient Database")) {      
     		JOptionPane.showMessageDialog(null, "Test 2!");
     	} 
 	}
