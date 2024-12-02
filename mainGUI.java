@@ -2,7 +2,6 @@ import java.awt.*;
 import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 public class mainGUI extends JFrame implements ActionListener{
 	
@@ -14,11 +13,11 @@ public class mainGUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Container contentPane = this.getContentPane();
 		contentPane.setLayout(new GridLayout());
+		
 		//and relevant GUI components
 		JPanel panel[] = new JPanel[2]; 
 		JButton options[] = new JButton[2];
 
-		
 		//buttons for admin vs user
 		panel[0] = new JPanel();
 		panel[1] = new JPanel();
@@ -32,14 +31,15 @@ public class mainGUI extends JFrame implements ActionListener{
 		options[1].addActionListener(this);
 		setVisible(true);
 	}
+	
 	public void actionPerformed(ActionEvent event){
 		String  buttonName;
     	buttonName = event.getActionCommand();
     	if (buttonName.equals("Patient Sleep Disorder Survey")) {      
-    		JOptionPane.showMessageDialog(null, "Test 1!");
+    		new surveyGUI("Patient Survey", 600, 850);
     	} 
     	else if (buttonName.equals("Edit Patient Database")) {      
-    		JOptionPane.showMessageDialog(null, "Test 2!");
+    		new addPatientGUI("Database Editor", 600, 950);
     	} 
 	}
 }
