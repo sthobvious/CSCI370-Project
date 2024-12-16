@@ -113,6 +113,15 @@ public class patient {
     public void setID(int newID) {
         this.id = newID;
     }
+    public int checkData() {
+    	int missingCounter = 0;
+    	for (int i = 0; i < (features.length); i++) {
+    		if (features[i] == -1) {
+    			missingCounter++;
+    		}
+    	}
+    	return missingCounter;
+    }
     /*
      * public double getFeatData(int feat) {
      * 
