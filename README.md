@@ -1,1 +1,2 @@
-# redesigned-octo-giggle
+# CSI370 - Project 
+Utilizing Random Forest
