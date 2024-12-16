@@ -1,23 +1,25 @@
 import java.awt.*;
-import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 import javax.swing.*;
 public class mainGUI extends JFrame implements ActionListener{
 	JPanel panel[] = new JPanel[6]; 
 	JButton options[] = new JButton[6];
 	Container contentPane = this.getContentPane();
-	public mainGUI(String title, int height, int width) {
+	patientForm sleepForm2;
+	public mainGUI(String title, int height, int width, patientForm sleepForm1) {
+		sleepForm2 = sleepForm1;
 		//make the actual jframe
 		setTitle(title);
 		setSize(height, width);
-		setLocation(400, 400);
+		setLocation(600, 200);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		contentPane.setLayout(new GridLayout(6, 1));
 		
 		//main menu buttons, first 2 buttons should be visible other 4 no. 
 		options[0] = new JButton("Patient Sleep Disorder Survey");
-		options[1] = new JButton("Edit Patient Database");
+		options[1] = new JButton("Configure Patient Database");
 		options[2] = new JButton("Remove Patient");
 		options[3] = new JButton("Add Patient");
 		options[4] = new JButton("Edit Existing Patient");
@@ -34,16 +36,15 @@ public class mainGUI extends JFrame implements ActionListener{
 		options[3].setVisible(false);
 		options[4].setVisible(false);
 		options[5].setVisible(false);
-		
 	}
 	
 	public void actionPerformed(ActionEvent event){
 		String  buttonName;
     	buttonName = event.getActionCommand();
     	if (buttonName.equals("Patient Sleep Disorder Survey")) {      
-    		new surveyGUI("Patient Survey", 600, 850);
+    		new surveyGUI("Patient Survey", 600, 730, sleepForm2);
     	} 
-    	else if (buttonName.equals("Edit Patient Database")) {      
+    	else if (buttonName.equals("Configure Patient Database")) {      
     		options[0].setVisible(false);
     		options[1].setVisible(false);
     		options[2].setVisible(true);
@@ -53,13 +54,13 @@ public class mainGUI extends JFrame implements ActionListener{
     		
     	} 
     	else if (buttonName.equals("Add Patient")) {      
-    		new addPatientGUI("Patient Survey", 600, 930);
+    		new addPatientGUI("Patient Survey", 600, 800, sleepForm2);
     	} 
     	else if (buttonName.equals("Remove Patient")) {      
-    		new removePatientGUI("Remove Patient", 600, 300);
+    		new removePatientGUI("Remove Patient", 600, 300, sleepForm2);
     	} 
     	else if (buttonName.equals("Edit Existing Patient")) {      
-    		new editPatientGUI("Edit Existing Patient", 600, 980);
+    		new editPatientGUI("Edit Existing Patient", 600, 850, sleepForm2);
     	} 
     	else if (buttonName.equals("Return to Main Menu")) {      
     		options[0].setVisible(true);
