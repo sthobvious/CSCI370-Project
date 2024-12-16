@@ -1,19 +1,22 @@
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
 import javax.swing.*;
 public class addPatientGUI extends JFrame implements ActionListener{			
-	JPanel panel[] = new JPanel[26]; 
-	JTextField patientInput[] = new JTextField[12];
-	JTextArea patientAttribute[] = new JTextArea[14];
-	String[] instructions = new String[14];
-
-	public addPatientGUI(String title, int height, int width) {
+	JPanel panel[] = new JPanel[24]; 
+	JTextField patientInput[] = new JTextField[11];
+	JTextArea patientAttribute[] = new JTextArea[13];
+	String[] instructions = new String[13];
+	patientForm sleepForm3;
+	public addPatientGUI(String title, int height, int width, patientForm sleepForm2) {
+		sleepForm3 = sleepForm2;
 		setTitle(title);
 		setSize(height, width);
 		setLocation(400, 400);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		Container contentPane = this.getContentPane();
-		contentPane.setLayout(new GridLayout(26, 1));
+		contentPane.setLayout(new GridLayout(24, 1));
 		for (int i = 0; i < panel.length; i++) {
 			panel[i] = new JPanel();
 		}
@@ -22,17 +25,16 @@ public class addPatientGUI extends JFrame implements ActionListener{
 		}		
 		instructions[0]= "Gender";
 		instructions[1]= "Age";
-		instructions[2]= "Occupation";
-		instructions[3]= "Sleep Duration";
-		instructions[4]= "Quality of sleep";
-		instructions[5]= "Physical activity (minutes per day)";
-		instructions[6]= "Stress level on a scale of 1-10";
-		instructions[7]= "BMI estimation (normal, overweight, obese)";
-		instructions[8]= "Blood Pressure";
-		instructions[9]= "Resting Heart Rate";
-		instructions[10]= "Daily Steps";
-		instructions[11]= "Presence of sleep disorder (Y/N)";
-		instructions[12]= "Click on the OK button once all patient data is ready to be entered into the database.";
+		instructions[2]= "Sleep Duration in hours";
+		instructions[3]= "Quality of sleep on a scale of 1-10";
+		instructions[4]= "Physical activity (minutes per day)";
+		instructions[5]= "Stress level on a scale of 1-10";
+		instructions[6]= "BMI estimation (normal, overweight, obese)";
+		instructions[7]= "Blood Pressure";
+		instructions[8]= "Resting Heart Rate";
+		instructions[9]= "Daily Steps";
+		instructions[10]= "Presence of sleep disorder (Y/N)";
+		instructions[11]= "Click on the OK button once all patient data is ready to be entered into the database.";
 		
 		int j = 0; 
 		int k = 0;
@@ -45,7 +47,7 @@ public class addPatientGUI extends JFrame implements ActionListener{
 				panel[i].add(patientAttribute[j]);
 				j++;
 			}
-			else if (i < 24){
+			else if (i < 22){
 				panel[i].add(patientInput[k]);
 				k++;
 			}
@@ -53,7 +55,7 @@ public class addPatientGUI extends JFrame implements ActionListener{
 		
 		JButton ok = new JButton("OK");
 		ok.addActionListener(this);
-		panel[25].add(ok);
+		panel[23].add(ok);
 		setVisible(true);
 	}    
 	public void actionPerformed(ActionEvent event){
