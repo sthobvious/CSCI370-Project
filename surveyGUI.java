@@ -84,14 +84,17 @@ public class surveyGUI extends JFrame implements ActionListener{
 						dataToSend[i] = patientInput[i-2].getText();
 					}
 		    		dataToSend[12] = "999999";
-		    		for (int i = 0; i < dataToSend.length; i++) { 
-		    			System.out.println(dataToSend[i]);
-					}
-		    		dataToSend[12] = "999999";
+		    		randomForest RF = new randomForest();
+		    		RF.fit(sleepForm3);
+		    		
 	    			patient pete = new patient(dataToSend);
-	    			ArrayList<patient> patientStorage = new ArrayList<patient>();
-	    			patientStorage.add(pete);
-	    			patientForm b = new patientForm(patientStorage, 100); 
+	    			ArrayList<patient> testCandidates = new ArrayList<>();
+	    			testCandidates.add(pete);
+	    			patientForm patientsTest = new patientForm(testCandidates);
+	    			ArrayList<Integer> predictions = RF.predict(patientsTest);        
+	    	        System.out.println("the predictions are: ");
+	    	        for (Integer i : predictions)
+	    	        System.out.println(i);
 	    			//functionality goes here (the code to enter patient info so that the random forest can make a prediction)
 	    			
 	    			//open GUI to display results to user.
