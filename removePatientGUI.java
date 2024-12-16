@@ -1,11 +1,16 @@
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
 import javax.swing.*;
 public class removePatientGUI extends JFrame implements ActionListener{
 	JPanel panel[] = new JPanel[3]; 
 	JTextField adminInput = new JTextField(20);
 	JTextArea instructions = new JTextArea();
-	public removePatientGUI(String title, int height, int width) {
+	patientForm sleepForm3;
+	
+	public removePatientGUI(String title, int height, int width, patientForm sleepForm2) {
+		sleepForm3 = sleepForm2;
 		setTitle(title);
 		setSize(height, width);
 		setLocation(400, 400);
@@ -37,10 +42,17 @@ public class removePatientGUI extends JFrame implements ActionListener{
 			else if (adminInput.getText().isEmpty() != true) {
 				try {
     				int patientIDInput1 = Integer.parseInt(adminInput.getText());
-    				if (false) {
+    				boolean flag = false;
+    				for (int i = 0; i < 500; i++) {
+    					//if input isnt equal to an existing ID, then set it to null
+    				}
+    				if (flag == true) {
+    					//set null
     					JOptionPane.showMessageDialog(null, "Patient"+"ID#"+"successfully deleted");
+    					//copy old arraylist to new arraylist
+    					//rewrite entire file using new arraylist
     				}  
-    				else if (false) { 
+    				else if (flag == false) { 
     					JOptionPane.showMessageDialog(null, "Patient ID specified does not exist");
     				}
     			}
